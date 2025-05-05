@@ -6,7 +6,7 @@ variable "enable_inheritance" {
 
 variable "inherited_tags" {
   type        = map(string)
-  description = "Map of inherited tags from parent context"
+  description = "Map of tags inherited from parent context"
   default     = {}
 }
 
