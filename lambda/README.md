@@ -22,7 +22,7 @@ module "demo-function" {
         NODE_ENV = "dev"
     }
 
-    image_repository_url = ""
+    image_repository_url = "public.ecr.aws/starframe/hello-world:latest"
 
     execution_role_policy_arns = [
         module.demo-ddb.iam_policy_arn['Put']
