@@ -28,8 +28,8 @@ data "aws_iam_policy_document" "default" {
 resource "aws_iam_role" "default" {
   for_each = data.aws_iam_policy_document.default
 
-  name                 = "${each.key}-GithubOidcRolePolicy"
-  description          = "Deploy access for Github Actions on authorized repositories"
+  name                 = replace("${each.key}-GithubOidcRolePolicy", "/", "-")
+  description          = "Deploy access for Github Actions on ${each.key}"
   max_session_duration = 3600 # 1h
   assume_role_policy   = each.value.json
 }

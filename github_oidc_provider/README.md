@@ -22,4 +22,4 @@ module "GitHubOIDC" {
 **`iam_role_policy_map`**
 
 - **Description:** A map of GitHub repository names to IAM Policy ARNs
-- **Type:** `map(string, string)`
+- **Type:** `map(string)`

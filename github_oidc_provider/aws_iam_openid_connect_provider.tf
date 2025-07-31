@@ -3,10 +3,10 @@ locals {
 }
 
 data "external" "thumbprint" {
-  program = ["bin/thumbprint.sh", local.openid_url]
+  program = ["${path.module}/bin/thumbprint.sh", local.openid_url]
 }
 
-resource "aws_iam_openid_connect_provider" "this" {
+resource "aws_iam_openid_connect_provider" "default" {
   url = "https://token.actions.githubusercontent.com"
 
   client_id_list = [
