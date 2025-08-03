@@ -1,11 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.97.0"
-    }
-  }
-}
 
 locals {
   openid_url = "https://token.actions.githubusercontent.com/.well-known/openid-configuration"
