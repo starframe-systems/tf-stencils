@@ -11,8 +11,8 @@ module "GitHubOIDC" {
     source = "git@github.com:starframe-systems/tf-stencils.git//github_oidc_provider?ref=v0.1.0"
 
     iam_role_policy_map = {
-        "organization/user-service" = module.UserService.iam_policy_arn['oidc_deploy']
-        "organization/transaction-service" = module.TransactionService.iam_policy_arn['oidc_deploy']
+        "organization/repo-one" = module.ServiceOne.iam_policy_arn['oidc_deploy']
+        "organization/repo-two" = module.ServiceTwo.iam_policy_arn['oidc_deploy']
     }
 }
 ```
