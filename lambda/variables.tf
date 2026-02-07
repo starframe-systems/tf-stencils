@@ -83,6 +83,12 @@ variable "architectures" {
   }
 }
 
+variable "event_source_arns" {
+  type        = list(string)
+  description = "list of Lambda event source ARNs to attach to the function"
+  default     = []
+}
+
 variable "environment_variables" {
   type        = map(string)
   description = "Map of environment variable names and values to supply to the Lambda function"

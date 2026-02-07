@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "read" {
+data "aws_iam_policy_document" "read-only" {
   statement {
     sid = "route53hostedzone"
 
@@ -37,13 +37,13 @@ data "aws_iam_policy_document" "read" {
   }
 }
 
-resource "aws_iam_policy" "read" {
-  name        = "${local.prefix}Route53ReadAccess"
+resource "aws_iam_policy" "read-only" {
+  name        = "${local.prefix}Route53ReadOnlyAccess"
   description = "Route53 cross-account access for ${local.prefix}"
-  policy      = data.aws_iam_policy_document.read.json
+  policy      = data.aws_iam_policy_document.read-only.json
 }
 
-resource "aws_iam_role_policy_attachment" "read" {
+resource "aws_iam_role_policy_attachment" "read-only" {
   role       = var.role_name
-  policy_arn = aws_iam_policy.read.arn
+  policy_arn = aws_iam_policy.read-only.arn
 }

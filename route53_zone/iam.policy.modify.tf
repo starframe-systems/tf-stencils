@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "write" {
+data "aws_iam_policy_document" "modify" {
   statement {
     sid = "route53hostedzone"
 
@@ -6,6 +6,8 @@ data "aws_iam_policy_document" "write" {
       "route53:AssociateVPCWithHostedZone",
       "route53:ChangeResourceRecordSets",
       "route53:ChangeTagsForResource",
+      "route53:DisableHostedZoneDNSSEC",
+      "route53:DisassociateVPCFromHostedZone",
       "route53:EnableHostedZoneDNSSEC",
       "route53:GetHostedZone",
       "route53:ListResourceRecordSets",
@@ -42,13 +44,13 @@ data "aws_iam_policy_document" "write" {
   }
 }
 
-resource "aws_iam_policy" "write" {
-  name        = "${local.prefix}Route53WriteAccess"
+resource "aws_iam_policy" "modify" {
+  name        = "${local.prefix}Route53ModifyAccess"
   description = "Route53 cross-account access for ${local.prefix}"
-  policy      = data.aws_iam_policy_document.write.json
+  policy      = data.aws_iam_policy_document.modify.json
 }
 
-resource "aws_iam_role_policy_attachment" "write" {
+resource "aws_iam_role_policy_attachment" "modify" {
   role       = var.role_name
-  policy_arn = aws_iam_policy.write.arn
+  policy_arn = aws_iam_policy.modify.arn
 }
