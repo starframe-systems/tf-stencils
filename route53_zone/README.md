@@ -52,6 +52,14 @@ module "route53_zone" {
 
 - **Description:** The ARN of the Route53 Hosted Zone
 
+**`name_servers`**
+
+- **Description:** A list of name servers in associated (or default) delegation set
+
+**`primary_name_server`**
+
+- **Description:** The Route 53 name server that created the SOA record
+
 **`iam_policy_arn`**
 
 - **Description:** A dictionary of IAM policies that can be attached to execution roles on other resources
