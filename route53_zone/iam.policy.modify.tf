@@ -17,7 +17,7 @@ data "aws_iam_policy_document" "modify" {
     ]
 
     resources = [
-      var.created_by_route53_registrar ? data.aws_route53_zone.this[0].arn : aws_route53_zone.this[0].arn
+      var.created_by_route53_registrar ? data.aws_route53_zone.default[0].arn : aws_route53_zone.default[0].arn
     ]
   }
 

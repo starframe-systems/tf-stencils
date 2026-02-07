@@ -1,5 +1,5 @@
 
-resource "aws_route53_zone" "this" {
+resource "aws_route53_zone" "default" {
   count   = var.created_by_route53_registrar ? 0 : 1
   name    = local.zone_name
   comment = <<-EOT
@@ -9,7 +9,7 @@ resource "aws_route53_zone" "this" {
   tags = local.resource_tags
 }
 
-data "aws_route53_zone" "this" {
+data "aws_route53_zone" "default" {
   count = var.created_by_route53_registrar ? 1 : 0
   name  = local.zone_name
 
