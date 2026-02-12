@@ -1,0 +1,71 @@
+openapi: 3.0.3
+
+info:
+  title: Default API Gateway Routing
+  description: Send all requests other than `/test` to a Lambda via proxy integration
+  version: 0.1.0
+
+paths:
+  /:
+    x-amazon-apigateway-any-method:
+      responses:
+        "200": # Success
+          description: Successful operation
+      x-amazon-apigateway-auth:
+        type: "NONE"
+      x-amazon-apigateway-integration:
+        type: "aws_proxy"
+        httpMethod: "POST"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: when_no_match
+        timeoutInMillis: 29000
+        connectionType: "INTERNET"
+        uri: "arn:aws:apigateway:${aws_region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${aws_region}:${aws_account_id}:function:${aws_lambda_function_name}/invocations"
+
+  /{path+}:
+    x-amazon-apigateway-any-method:
+      responses:
+        "200": # Success
+          description: Successful operation
+      x-amazon-apigateway-auth:
+        type: "NONE"
+      x-amazon-apigateway-integration:
+        type: "aws_proxy"
+        httpMethod: "POST"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: when_no_match
+        timeoutInMillis: 29000
+        connectionType: "INTERNET"
+        uri: "arn:aws:apigateway:${aws_region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${aws_region}:${aws_account_id}:function:${aws_lambda_function_name}/invocations"
+
+  /test:
+    get:
+      responses:
+        "200": # Success
+          description: Successful operation
+      x-amazon-apigateway-auth:
+        type: "NONE"
+      x-amazon-apigateway-integration:
+        type: "mock"
+        httpMethod: "GET"
+        connectionType: "INTERNET"
+        contentHandling: "CONVERT_TO_TEXT"
+        passthroughBehavior: when_no_templates
+        timeoutInMillis: 29000
+        requestTemplates:
+          application/json: '{"statusCode": 200}'
+        requestParameters: {}
+        responses:
+          200:
+            statusCode: "200"
+            responseTemplates:
+              application/json: |
+                {
+                  "http_method": "$context.httpMethod",
+                  "protocol": "$context.protocol",
+                  "request_id": "$context.requestId"
+                }
