@@ -8,7 +8,7 @@ In this example, an OpenID Connect provider resource is created with GitHub's pu
 
 ```
 module "GitHubOIDC" {
-    source = "git@github.com:starframe-systems/tf-stencils.git//github_oidc_provider?ref=v0.1.0"
+    source = "git@github.com:starframe-systems/tf-stencils.git//github_oidc_provider?ref=v0.1.4"
 
     iam_role_policy_map = {
         "organization/repo-one" = module.ServiceOne.iam_policy_arn['oidc_deploy']
