@@ -1,5 +1,5 @@
 module "handler" {
-  source = "git@github.com:starframe-systems/tf-stencils.git//lambda?ref=v1.0.2"
+  source = "git@github.com:starframe-systems/tf-stencils.git//lambda?ref=v0.1.4"
 
   env_name           = var.env_name
   prefix             = local.prefix
@@ -22,7 +22,7 @@ module "handler" {
 }
 
 module "gateway" {
-  source = "git@github.com:starframe-systems/tf-stencils.git//api_gateway_v1?ref=v1.0.2"
+  source = "git@github.com:starframe-systems/tf-stencils.git//api_gateway_v1?ref=v0.1.4"
 
   name        = "HelloGateway"
   prefix      = local.prefix
