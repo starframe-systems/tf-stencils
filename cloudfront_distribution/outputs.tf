@@ -5,6 +5,6 @@ output "domain_name" {
 
 output "iam_policy_arn" {
   value = {
-    CreateInvalidation = aws_iam_policy.CreateInvalidation
+    CreateInvalidation = aws_iam_policy.CreateInvalidation.arn
   }
 }
