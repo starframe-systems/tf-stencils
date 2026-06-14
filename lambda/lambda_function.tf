@@ -6,6 +6,15 @@ resource "aws_lambda_function" "default" {
   package_type = "Image"
   image_uri    = "${var.image_repository_url}:${var.image_tag}"
 
+  dynamic "image_config" {
+    for_each = length(var.image_config_overrides) > 0 ? [var.image_config_overrides] : []
+    content {
+      command           = lookup(image_config.value, "command", null)
+      entry_point       = lookup(image_config.value, "entry_point", null)
+      working_directory = lookup(image_config.value, "working_directory", null)
+    }
+  }
+
   timeout                        = var.timeout
   memory_size                    = var.memory_size
   reserved_concurrent_executions = "-1"
