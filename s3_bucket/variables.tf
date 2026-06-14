@@ -49,16 +49,17 @@ variable "bucket_policy_json" {
 variable "bucket_public_access" {
     description = "(optional) Bucket public access flags: block_public_acls, block_public_policy, ignore_public_acls, restrict_public_buckets; All default to true."
     type = object({
-      block_public_acls = bool
-      block_public_policy = bool
-      ignore_public_acls = bool
-      restrict_public_buckets = bool
+      block_public_acls = optional(bool)
+      block_public_policy = optional(bool)
+      ignore_public_acls = optional(bool)
+      restrict_public_buckets = optional(bool)
     })
     default = {
-      block_public_acls = true
-      block_public_policy = true
-      ignore_public_acls = true
-      restrict_public_buckets = true
+      # These values are set by the default value passed to the lookup function in the aws_s3_bucket_public_access_block resource
+      # block_public_acls = true
+      # block_public_policy = true
+      # ignore_public_acls = true
+      # restrict_public_buckets = true
     }
 }
 

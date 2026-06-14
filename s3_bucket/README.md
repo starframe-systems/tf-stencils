@@ -51,10 +51,10 @@ The S3 Bucket module creates an S3 Bucket and associated configuration for some 
 - **Type:**
   ```
   object({
-      block_public_acls = bool
-      block_public_policy = bool
-      ignore_public_acls = bool
-      restrict_public_buckets = bool
+      block_public_acls = optional(bool)
+      block_public_policy = optional(bool)
+      ignore_public_acls = optional(bool)
+      restrict_public_buckets = optional(bool)
   })
   ```
 - **Default:**
