@@ -6,7 +6,7 @@ This module creates policy attachments to the account's Github OpenID Connect Pr
 
 ```
 module "GithubOIDCPolicy" {
-    source = "git@github.com:starframe-systems/tfstencils.git//github_oidc_policy?ref=v0.1.5"
+    source = "git@github.com:starframe-systems/tfstencils.git//github_oidc_policy?ref=v0.1.7"
 
     repository = "username/repository"
     openid_connect_provider_arn = "arn:aws:iam:::oidc-provider/token.actions.githubusercontent.com"

@@ -6,7 +6,7 @@ The EventBridge Scheduler module creates an EventBridge Schedule Group for a col
 
 ```
 module "CanaryWorker" {
-    source = "git@github.com:starframe-systems/tf-stencils.git//lambda?ref=v0.1.4"
+    source = "git@github.com:starframe-systems/tf-stencils.git//lambda?ref=v0.1.7"
 
     name     = "CanaryWorker"
     prefix   = "CanaryService"
@@ -16,7 +16,7 @@ module "CanaryWorker" {
 }
 
 module "CanaryScheduler" {
-  source = "git@github.com:starframe-systems/tf-stencils.git//event_bridge_scheduler?ref=v0.1.4"
+  source = "git@github.com:starframe-systems/tf-stencils.git//event_bridge_scheduler?ref=v0.1.7"
 
   name     = "CanarySchedule"
   prefix   = "CanaryService"
