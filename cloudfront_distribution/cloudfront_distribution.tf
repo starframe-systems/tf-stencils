@@ -100,4 +100,6 @@ resource "aws_cloudfront_distribution" "default" {
       locations        = []
     }
   }
+
+  tags = local.resource_tags
 }

@@ -118,6 +118,20 @@ variable "image_repository_url" {
   description = "The ECR Repository URL for the Lambda function's image"
 }
 
+variable "image_config_overrides" {
+  type = object({
+    entry_point       = optional(list(string))
+    command           = optional(list(string))
+    working_directory = optional(string)
+  })
+  default = {
+    # command           = ["index.handler"]
+    # entry_point       = ["/usr/local/bin/entrypoint.sh"]
+    # working_directory = "/var/task"
+  }
+  description = "Dynamic Image Config overrides"
+}
+
 variable "image_tag" {
   type        = string
   description = "The docker image tag to request from the ECR Repository"
