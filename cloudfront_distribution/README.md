@@ -6,7 +6,7 @@ Creates a Cloudfront Distribution, with either an S3 Bucket or a custom domain a
 
 ```
 module "frontend_cdn" {
-  source = "git@github.com:starframe-systems/tf-stencils.git//cloudfront_distribution?ref=v0.1.7"
+  source = "git@github.com:starframe-systems/tf-stencils.git//cloudfront_distribution?ref=v0.1.8"
 
   description              = "Cloudfront Distribution to serve frontend assets"
   bucket_name              = "origin-bucket.organization-internal"

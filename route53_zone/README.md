@@ -6,7 +6,7 @@ Creates a Route53 Hosted Zone
 
 ```
 module "route53_zone" {
-    source = "git@github.com:starframe-systems/tf-stencils.git//route53_zone?ref=v0.1.7"
+    source = "git@github.com:starframe-systems/tf-stencils.git//route53_zone?ref=v0.1.8"
 
     domain_name  = "example.org"
     account_name = "ExampleDotOrg"

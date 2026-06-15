@@ -1,5 +1,5 @@
 module "gateway" {
-  source                       = "git@github.com:starframe-systems/tf-stencils.git//api_gateway_v1?ref=v0.1.7"
+  source                       = "git@github.com:starframe-systems/tf-stencils.git//api_gateway_v1?ref=v0.1.8"
   name                         = "handler"
   prefix                       = local.prefix
   handler_function_name        = module.handler.function_name
