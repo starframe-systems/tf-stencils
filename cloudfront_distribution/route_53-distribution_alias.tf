@@ -1,7 +1,7 @@
 
 resource "aws_route53_record" "distrinbution-alias" {
   zone_id = var.route53_zone_id
-  name    = var.distribution_domain_name
+  name    = local.distribution_domain_name
   type    = "A"
 
   alias {

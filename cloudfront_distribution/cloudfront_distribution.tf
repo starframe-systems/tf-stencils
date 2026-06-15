@@ -1,21 +1,21 @@
 
 resource "aws_cloudfront_distribution" "default" {
   dynamic "origin" {
-    for_each = var.bucket_name != null ? [1] : []
+    for_each = var.bucket_name != null ? [true] : []
 
     content {
-      domain_name = var.bucket_name
-      origin_id   = var.distribution_domain_name
+      domain_name = data.aws_s3_bucket.origin[0].bucket_regional_domain_name
+      origin_id   = local.distribution_domain_name
       origin_access_control_id = aws_cloudfront_origin_access_control.default[0].id
     }
   }
 
   dynamic "origin" {
-    for_each = var.origin_domain_name != null ? [1] : []
+    for_each = var.bucket_name != null ? [] : [true]
 
     content {
       domain_name = var.origin_domain_name
-      origin_id   = var.distribution_domain_name
+      origin_id   = local.distribution_domain_name
 
       custom_origin_config {
         http_port              = 80
@@ -26,14 +26,11 @@ resource "aws_cloudfront_distribution" "default" {
     }
   }
 
-  aliases = [var.distribution_domain_name]
+  aliases = [local.distribution_domain_name]
 
   default_cache_behavior {
-    target_origin_id = var.distribution_domain_name
-    allowed_methods = [
-      "GET",
-      "HEAD",
-    ]
+    target_origin_id = local.distribution_domain_name
+    allowed_methods = var.cache_behavior_allowed_methods
     cached_methods = [
       "GET",
       "HEAD"

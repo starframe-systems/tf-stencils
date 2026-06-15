@@ -1,7 +1,7 @@
 
 resource "aws_acm_certificate" "default" {
   provider                  = aws.acm_provider
-  domain_name               = var.distribution_domain_name
+  domain_name               = local.distribution_domain_name
   subject_alternative_names = []
   validation_method         = "DNS"
 

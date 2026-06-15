@@ -1,5 +1,5 @@
 resource "aws_cloudfront_cache_policy" "default" {
-  name    = "${replace(var.distribution_domain_name, ".", "_")}-DefaultCachePolicy"
+  name    = "${replace(local.distribution_domain_name, ".", "_")}-DefaultCachePolicy"
   comment = "Default policy when CF compression is enabled"
 
   default_ttl = 86400

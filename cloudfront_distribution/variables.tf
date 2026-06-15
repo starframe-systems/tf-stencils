@@ -14,6 +14,22 @@ variable "origin_domain_name" {
 variable "distribution_domain_name" {
   description = "The domain name to use for the CloudFront distribution."
   type        = string
+  default     = null
+}
+
+variable "cache_behavior_allowed_methods" {
+  description = "(Optional) Controls which HTTP methods CloudFront processes and forwards to your Amazon S3 bucket or your custom origin."
+  type        = list(string)
+  default     = [ "GET", "HEAD" ]
+
+  validation {
+    condition = (
+      toset(var.cache_behavior_allowed_methods) == toset(["GET", "HEAD"]) ||
+      toset(var.cache_behavior_allowed_methods) == toset(["GET", "HEAD", "OPTIONS"]) ||
+      toset(var.cache_behavior_allowed_methods) == toset(["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"])
+    )
+    error_message = "The default cache behavior allowed methods must be either [GET, HEAD], [GET, HEAD, OPTIONS] or [GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE]"
+  }
 }
 
 variable "description" {

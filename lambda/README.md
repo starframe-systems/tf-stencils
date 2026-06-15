@@ -6,13 +6,13 @@ The lambda module creates a lambda function and the requisite execution role pol
 
 ```
 module "demo-ddb" {
-    source = "git@github.com:starframe-systems/tf-stencils.git//dynamo_db?ref=v0.1.7"
+    source = "git@github.com:starframe-systems/tf-stencils.git//dynamo_db?ref=v0.1.8"
 
     # Additional configuration...
 }
 
 module "demo-function" {
-    source = "git@github.com:starframe-systems/tf-stencils.git//lambda?ref=v0.1.7"
+    source = "git@github.com:starframe-systems/tf-stencils.git//lambda?ref=v0.1.8"
 
     name = "demo-function"
     prefix = "DemoService"
