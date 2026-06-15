@@ -16,7 +16,7 @@ locals {
   )
 }
 
-resource "aws_api_gateway_rest_api" "this" {
+resource "aws_api_gateway_rest_api" "main" {
   name           = local.prefix
   description    = var.description
   api_key_source = "HEADER"
@@ -46,5 +46,5 @@ resource "aws_lambda_permission" "invoke" {
   action        = "lambda:InvokeFunction"
   function_name = var.handler_function_name
   principal     = "apigateway.amazonaws.com"
-  source_arn    = "${aws_api_gateway_rest_api.this.execution_arn}/*"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
 }

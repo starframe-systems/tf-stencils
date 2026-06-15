@@ -6,4 +6,5 @@ locals {
   region         = data.aws_region.current.name
   aws_account_id = data.aws_caller_identity.current.account_id
   prefix         = "${var.prefix}-${var.name}"
+  resource_tags  = module.tags.combined_tags
 }
