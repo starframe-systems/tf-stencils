@@ -40,11 +40,20 @@ resource "aws_api_gateway_rest_api" "main" {
   tags                     = module.tags.combined_tags
 }
 
-resource "aws_lambda_permission" "invoke" {
+resource "aws_lambda_permission" "invoke_default" {
   count         = local.body_default ? 1 : 0
   statement_id  = "AllowExecutionFromAPIGateway"
   action        = "lambda:InvokeFunction"
   function_name = var.handler_function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
+}
+
+resource "aws_lambda_permission" "invoke_openapi" {
+  count         = var.authorized_handler_functions != null ? length(var.authorized_handler_functions) : 0
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = var.authorized_handler_functions[count.index]
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
 }
