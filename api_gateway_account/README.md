@@ -8,7 +8,7 @@ When you delete a stack containing this resource, API Gateway can still assume t
 
 ```
 module "api_gateway_account" {
-    source = "git@github.com:starframe-systems/tf-stencils.git//api_gateway_account?ref=v0.1.8"
+    source = "git@github.com:starframe-systems/tf-stencils.git//api_gateway_account?ref=v0.1.9"
 }
 ```
 
