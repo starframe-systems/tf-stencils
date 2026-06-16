@@ -28,6 +28,11 @@ variable "openapi_specification" {
   description = "OpenAPI specification that defines the set of routes and integrations to create as part of the REST API. Mutually exclusive with `openapi_paths` and `handler_function_name`."
   default     = null
 }
+variable "authorized_handler_functions" {
+  type        = list(string)
+  description = "A list of Lambda handler functions that the API Gateway requires invoke permissions on"
+  default     = null
+}
 variable "handler_function_name" {
   type        = string
   description = "The name of the handler Lambda function. Required for the default OpenAPI specification to work and mutually exclusive with `openapi_paths` and `openapi_specification`."

@@ -10,6 +10,6 @@ Generally there should be one module for each account. Terraform provider config
 
 ```
 module "staging-tf-state" {
-    source = "git@github.com:starframe-systems/tf-stencils.git//terraform_state?ref=v0.1.8"
+    source = "git@github.com:starframe-systems/tf-stencils.git//terraform_state?ref=v0.1.9"
 }
 ```
