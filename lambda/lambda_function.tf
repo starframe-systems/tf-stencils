@@ -4,7 +4,7 @@ resource "aws_lambda_function" "default" {
   role          = aws_iam_role.execution.arn
 
   package_type = "Image"
-  image_uri    = "${var.image_repository_url}:${var.image_tag}"
+  image_uri    = "public.ecr.aws/lambda/nodejs:24"
 
   dynamic "image_config" {
     for_each = length(var.image_config_overrides) > 0 ? [var.image_config_overrides] : []
@@ -13,6 +13,13 @@ resource "aws_lambda_function" "default" {
       entry_point       = lookup(image_config.value, "entry_point", null)
       working_directory = lookup(image_config.value, "working_directory", null)
     }
+  }
+
+  lifecycle {
+    ignore_changes = [
+      image_uri,
+      source_code_hash
+    ]
   }
 
   timeout                        = var.timeout

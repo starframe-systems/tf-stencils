@@ -47,3 +47,9 @@ output "execution_role_arn" {
   value       = aws_iam_role.execution.arn
   description = "The ARN of the Lambda Function's execution role"
 }
+
+output "iam_policy_arn" {
+  value = {
+    "UpdateFunctionCode" = aws_iam_policy.UpdateFunctionCode.arn
+  }
+}
