@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "UpdateFunctionCode" {
       "lambda:UpdateFunctionCode",
     ]
     resources = [
-      aws_lambda_function.default.function_name
+      aws_lambda_function.default.arn
     ]
   }
 }
