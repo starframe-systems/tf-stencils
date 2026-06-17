@@ -31,7 +31,7 @@ variable "openapi_specification" {
 variable "authorized_handler_functions" {
   type        = list(string)
   description = "A list of Lambda handler functions that the API Gateway requires invoke permissions on"
-  default     = null
+  default     = []
 }
 variable "handler_function_name" {
   type        = string
