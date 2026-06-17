@@ -4,7 +4,7 @@ resource "aws_lambda_function" "default" {
   role          = aws_iam_role.execution.arn
 
   package_type = "Image"
-  image_uri    = "public.ecr.aws/lambda/nodejs:24"
+  image_uri    = "${var.image_repository_url}:${var.image_tag}"
 
   dynamic "image_config" {
     for_each = length(var.image_config_overrides) > 0 ? [var.image_config_overrides] : []

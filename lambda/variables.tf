@@ -113,6 +113,17 @@ variable "timeout" {
   default     = 3
 }
 
+variable "image_repository_url" {
+  type        = string
+  description = "The ECR Repository URL for the Lambda function's image"
+}
+
+variable "image_tag" {
+  type        = string
+  description = "The docker image tag to request from the ECR Repository"
+  default     = "latest"
+}
+
 variable "image_config_overrides" {
   type = object({
     entry_point       = optional(list(string))
