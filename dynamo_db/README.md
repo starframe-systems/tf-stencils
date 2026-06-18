@@ -8,7 +8,7 @@ This example shows a minimal configuration of the DynamoDB module.
 
 ```
 module "widget_svc_ddb" {
-    source = "git@github.com:starframe-systems/tf-stencils.git//dynamo_db?ref=v0.1.11"
+    source = "git@github.com:starframe-systems/tf-stencils.git//dynamo_db?ref=v0.1.12"
 
     prefix     = "Org-WidgetSvc"
     table_name = "Widgets"
