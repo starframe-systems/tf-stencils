@@ -5,6 +5,22 @@ info:
   description: Send all requests other than `/test` to a Lambda via proxy integration
   version: 0.1.0
 
+# x-amazon-apigateway-cors:
+#   allowOrigins:
+#     - "https://example.com"
+#     - "http://localhost:3000"
+#   allowMethods:
+#     - "GET"
+#     - "PUT"
+#     - "POST"
+#     - "PATCH"
+#     - "DELETE"
+#     - "OPTIONS"
+#   allowHeaders:
+#     - "Content-Type"
+#     - "Authorization"
+#   maxAge: 3600
+
 paths:
   /:
     x-amazon-apigateway-any-method:

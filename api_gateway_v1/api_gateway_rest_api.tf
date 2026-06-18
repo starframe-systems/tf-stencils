@@ -24,7 +24,8 @@ resource "aws_api_gateway_rest_api" "main" {
   body = (
     local.body_custom ? var.openapi_specification :
     local.body_extensible ? yamlencode(merge(local.openapi_stub, {
-      paths = merge(var.openapi_paths, local.openapi_test_path)
+      paths                      = merge(var.openapi_paths, local.openapi_test_path)
+      "x-amazon-apigateway-cors" = local.openapi_cors_configuration
     })) :
     templatefile("${path.module}/openapi_default.yaml", {
       aws_region               = local.region
