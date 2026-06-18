@@ -51,7 +51,7 @@ variable "cors_configuration" {
     allow_credentials = optional(bool, true)
     allow_methods     = optional(list(string), ["GET", "OPTIONS", "POST"])
     allow_headers     = optional(list(string), ["Content-Type", "x-amz-date", "x-apigateway-header"])
-    expose_headers    = optinal(list(string), ["Content-Type", "Location"])
+    expose_headers    = optional(list(string), ["Content-Type", "Location"])
     max_age           = optional(number, 3600)
   })
   default = null
