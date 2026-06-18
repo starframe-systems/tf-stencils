@@ -13,6 +13,15 @@ locals {
     }
   }
 
+  openapi_cors_configuration = var.cors_configuration ? {
+    allowOrigins     = var.cors_configuration["allow_origins"]
+    allowCredentials = var.cors_configuration["allow_credentials"]
+    allowMethods     = var.cors_configuration["allow_methods"]
+    allowHeaders     = var.cors_configuration["allow_headers"]
+    exposeHeaders    = var.cors_configuration["expose_headers"]
+    maxAge           = var.cors_configuration["max_age"]
+  } : {}
+
   openapi_test_path = {
     "/test" = {
       get = {

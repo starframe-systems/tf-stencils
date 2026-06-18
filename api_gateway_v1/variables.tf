@@ -44,6 +44,19 @@ variable "api_gateway_stage_name" {
   default     = "default_stage_name_change_me"
 }
 
+variable "cors_configuration" {
+  description = "(Optional) An object defining the API Gateway's CORS configuration"
+  type = object({
+    allow_origins     = optional(list(string), [])
+    allow_credentials = optional(bool, true)
+    allow_methods     = optional(list(string), ["GET", "OPTIONS", "POST"])
+    allow_headers     = optional(list(string), ["Content-Type", "x-amz-date", "x-apigateway-header"])
+    expose_headers    = optinal(list(string), ["Content-Type", "Location"])
+    max_age           = optional(number, 3600)
+  })
+  default = null
+}
+
 ######
 
 ##  CUSTOM DOMAIN / CNAME
