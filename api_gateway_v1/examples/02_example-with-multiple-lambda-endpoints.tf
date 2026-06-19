@@ -1,5 +1,5 @@
 module "ListUsers" {
-  source = "git@github.com:starframe-systems/tf-stencils.git//lambda?ref=v0.1.12"
+  source = "git@github.com:starframe-systems/tf-stencils.git//lambda?ref=v0.1.13"
 
   env_name           = var.env_name
   prefix             = local.prefix
@@ -14,7 +14,7 @@ module "ListUsers" {
 }
 
 module "CreateUser" {
-  source = "git@github.com:starframe-systems/tf-stencils.git//lambda?ref=v0.1.12"
+  source = "git@github.com:starframe-systems/tf-stencils.git//lambda?ref=v0.1.13"
 
   env_name           = var.env_name
   prefix             = local.prefix
@@ -29,7 +29,7 @@ module "CreateUser" {
 }
 
 module "GetUser" {
-  source = "git@github.com:starframe-systems/tf-stencils.git//lambda?ref=v0.1.12"
+  source = "git@github.com:starframe-systems/tf-stencils.git//lambda?ref=v0.1.13"
 
   env_name           = var.env_name
   prefix             = local.prefix
@@ -44,7 +44,7 @@ module "GetUser" {
 }
 
 module "Gateway" {
-  source     = "git@github.com:starframe-systems/tf-stencils.git//api_gateway_v1?ref=v0.1.12"
+  source     = "git@github.com:starframe-systems/tf-stencils.git//api_gateway_v1?ref=v0.1.13"
   depends_on = [module.Handler]
 
   name        = "HelloHandler"

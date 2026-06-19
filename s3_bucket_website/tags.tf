@@ -4,7 +4,7 @@ module "tags" {
   inherited_tags = var.inherited_tags
   additional_tags = {
     "starframe.stencil.name"           = "s3_bucket_website"
-    "starframe.stencil.version"        = "0.1.12"
+    "starframe.stencil.version"        = "0.1.13"
     "starframe.stencil.repository_url" = "starframe-systems/tf-stencils.git"
   }
 }
